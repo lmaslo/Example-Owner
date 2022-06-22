@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(
+            'org.junit.jupiter:junit-jupiter-api:5.8.2',
+            'io.github.bonigarcia:webdrivermanager:5.1.1',
+            'org.seleniumhq.selenium:selenium-java:3.141.59'
+    )
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.2')
+}
+
+test {
+    // System.getProperties() - вот здесь находится все, что вы передается через -D
+    // project.property() - вот здесь находится все, что вы передает через -P
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
